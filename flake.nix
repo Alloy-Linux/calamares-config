@@ -13,12 +13,16 @@
         inherit system;
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
-          
+
           ({ pkgs, lib, ... }: {
             services.displayManager.autoLogin = lib.mkForce {
               enable = true;
               user = "alloy";
             };
+
+            # testing.
+            boot.readOnlyNixStore = false;
+            boot.loader.grub.useOSProber = true;
 
             environment.systemPackages = [
               pkgs.calamares
@@ -59,7 +63,7 @@
               isNormalUser = true;
               extraGroups = [ "wheel" "networkmanager" "video" ];
             };
-            
+
 
             security.sudo.wheelNeedsPassword = false;
             networking.networkmanager.enable = true;
