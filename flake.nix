@@ -19,16 +19,17 @@
               enable = true;
               user = "alloy";
             };
-
             # testing.
             boot.readOnlyNixStore = false;
             boot.loader.grub.useOSProber = true;
 
             environment.systemPackages = [
               pkgs.calamares
+              pkgs.libsForQt5.plasma-framework # might help
               pkgs.calamares-nixos-extensions
               self.packages.${system}.setup-calamares-config
             ];
+            services.dbus.packages = [ pkgs.kdePackages.kpmcore ];
 
             system.activationScripts.calamares-config = ''
               mkdir -p /etc/calamares

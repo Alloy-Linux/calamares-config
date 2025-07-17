@@ -17,7 +17,7 @@ stdenv.mkDerivation {
     description = "Calamares config, branding, and modules for Alloy Linux";
     homepage = "https://github.com/Alloy-Linux";
     license = licenses.gpl3;
-    maintainers = [ maintainers.miyu ];
+    maintainers = [ maintainers.miyu maintainers.Simon ];
     platforms = platforms.linux;
   };
 }
